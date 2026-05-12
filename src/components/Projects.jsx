@@ -219,33 +219,7 @@ function ProjectCard({ project }) {
 }
 
 export default function Projects() {
-  const scrollRef = useRef(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-  const [activeCard, setActiveCard] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!scrollRef.current) return;
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      setCanScrollLeft(scrollLeft > 0);
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
-
-      const cardWidth = clientWidth * 0.82;
-      const activeIndex = Math.round(scrollLeft / cardWidth);
-      setActiveCard(activeIndex);
-    };
-
-    const el = scrollRef.current;
-    if (el) {
-      el.addEventListener('scroll', handleScroll);
-      handleScroll(); // init
-      return () => el.removeEventListener('scroll', handleScroll);
-    }
-  }, []);
-
-  const scrollLeft = () => scrollRef.current?.scrollBy({ left: -560, behavior: 'smooth' });
-  const scrollRight = () => scrollRef.current?.scrollBy({ left: 560, behavior: 'smooth' });
+  // Uses an auto-scrolling marquee instead of manual scroll
 
   return (
     <motion.section
@@ -269,65 +243,21 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        {/* Scroll Container Wrapper */}
-        <div className="relative px-8 md:px-12">
-
-          <AnimatePresence>
-            <motion.button
-              onClick={scrollLeft}
-              animate={{ opacity: canScrollLeft ? 1 : 0.3, pointerEvents: canScrollLeft ? 'auto' : 'none' }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/5 backdrop-blur-md border border-white/10 items-center justify-center text-white hover:bg-white/10 hover:border-white/20 transition-all duration-200"
-              aria-label="Scroll left"
-            >
-              <ChevronLeft size={18} />
-            </motion.button>
-          </AnimatePresence>
-
-          <AnimatePresence>
-            <motion.button
-              onClick={scrollRight}
-              animate={{ opacity: canScrollRight ? 1 : 0.3, pointerEvents: canScrollRight ? 'auto' : 'none' }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/5 backdrop-blur-md border border-white/10 items-center justify-center text-white hover:bg-white/10 hover:border-white/20 transition-all duration-200"
-              aria-label="Scroll right"
-            >
-              <ChevronRight size={18} />
-            </motion.button>
-          </AnimatePresence>
-
-          {/* Horizontal Scroll Container */}
-          <div
-            ref={scrollRef}
-            className={cn(
-              'flex flex-row flex-nowrap gap-6 pb-8',
-              'overflow-x-auto snap-x snap-mandatory',
-              '[&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]'
-            )}
+        {/* Infinite Horizontal Scroll Container */}
+        <div className="relative w-full overflow-hidden py-8">
+          <motion.div
+            className="flex flex-row flex-nowrap gap-6 sm:gap-8 w-max"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              repeat: Infinity,
+              ease: "linear",
+              duration: 40,
+            }}
           >
-            {PROJECTS.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+            {[...PROJECTS, ...PROJECTS].map((project, idx) => (
+              <ProjectCard key={`${project.id}-${idx}`} project={project} />
             ))}
-            {/* Spacer to allow scrolling past the last card nicely */}
-            <div className="w-4 flex-shrink-0" aria-hidden="true" />
-          </div>
-        </div>
-
-        {/* Mobile Dot Indicators */}
-        <div className="flex justify-center gap-2 mt-4 md:hidden">
-          {PROJECTS.map((_, idx) => (
-            <div
-              key={idx}
-              className={cn(
-                'transition-all duration-300',
-                activeCard === idx
-                  ? 'w-4 h-2 rounded-full bg-gradient-to-r from-[#7c3aed] to-[#06b6d4]'
-                  : 'w-2 h-2 rounded-full bg-white/20'
-              )}
-            />
-          ))}
+          </motion.div>
         </div>
       </div>
     </motion.section>
