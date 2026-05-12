@@ -18,7 +18,34 @@ const FEATURED_PROJECTS = [
     image: null,
     imageLabel: 'GST Saathi',
   },
-  // To add more projects in the future, simply copy the block above and modify the details.
+  {
+    id: 'project-coming-soon-1',
+    name: 'Coming Soon',
+    accentColor: '#3b82f6', // blue
+    hoverBorder: 'rgba(59, 130, 246, 0.4)',
+    baseGrad: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0a0a0f 100%)',
+    glowGrad: 'radial-gradient(circle at 50% 50%, #3b82f622 0%, transparent 70%)',
+    tagsStr: 'IN PROGRESS · NEW PRODUCT',
+    summary: 'A brand new innovative project is currently brewing behind the scenes. Stay tuned for something exciting!',
+    liveLink: null,
+    prdLink: null,
+    image: null,
+    imageLabel: 'Coming Soon',
+  },
+  {
+    id: 'project-coming-soon-2',
+    name: 'Coming Soon',
+    accentColor: '#a855f7', // purple
+    hoverBorder: 'rgba(168, 85, 247, 0.4)',
+    baseGrad: 'linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #0a0a0f 100%)',
+    glowGrad: 'radial-gradient(circle at 50% 50%, #a855f722 0%, transparent 70%)',
+    tagsStr: 'IN PROGRESS · NEXT BIG THING',
+    summary: 'Another exciting product is in the works. More details will be revealed once it is ready for prime time.',
+    liveLink: null,
+    prdLink: null,
+    image: null,
+    imageLabel: 'Coming Soon',
+  },
 ];
 
 const sectionVariants = {
