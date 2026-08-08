@@ -34,7 +34,7 @@ const FEATURED_PROJECTS = [
   },
   {
     id: 'project-blinkit-scout',
-    name: 'Blinkit Growth Case Study — Scout',
+    name: 'Scout For Blinkit',
     accentColor: '#f59e0b', // amber yellow
     hoverBorder: 'rgba(245, 158, 11, 0.4)',
     baseGrad: 'linear-gradient(135deg, #2e1a00 0%, #171200 50%, #0a0a0f 100%)',
