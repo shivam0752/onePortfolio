@@ -5,6 +5,21 @@ import { cn } from '@/lib/utils';
 
 const PROJECTS = [
   {
+    id: 'project-blinkit-scout',
+    name: 'Blinkit Growth Case Study — Scout',
+    accentColor: '#f59e0b',
+    hoverBorder: 'rgba(245, 158, 11, 0.4)',
+    baseGrad: 'linear-gradient(135deg, #2e1a00 0%, #0d0d1a 50%, #0a0a0f 100%)',
+    glowGrad: 'radial-gradient(circle at 50% 50%, #f59e0b22 0%, transparent 70%)',
+    tagsStr: 'GROWTH · AI RECOMMENDATION · CASE STUDY',
+    summary: 'Designed and prototyped Scout, an AI recommendation engine that surfaces categories a user has never bought from — paired with default trust proof.',
+    outcome: 'Root-cause research · Deployed MVP · Causal metrics framework',
+    duration: '2026',
+    link: 'https://drive.google.com/file/d/1i5tYjFD3VrKQsq0Wncvc4m17mNW4bgpx/view?usp=sharing',
+    image: null,
+    imageLabel: 'Blinkit Scout',
+  },
+  {
     id: 'project-book-my-mentor',
     name: 'Book My Mentor',
     accentColor: '#a855f7',

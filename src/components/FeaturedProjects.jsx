@@ -33,18 +33,19 @@ const FEATURED_PROJECTS = [
     imageLabel: 'ProdHub',
   },
   {
-    id: 'project-coming-soon-2',
-    name: 'Coming Soon',
-    accentColor: '#a855f7', // purple
-    hoverBorder: 'rgba(168, 85, 247, 0.4)',
-    baseGrad: 'linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #0a0a0f 100%)',
-    glowGrad: 'radial-gradient(circle at 50% 50%, #a855f722 0%, transparent 70%)',
-    tagsStr: 'IN PROGRESS · NEXT BIG THING',
-    summary: 'Another exciting product is in the works. More details will be revealed once it is ready for prime time.',
+    id: 'project-blinkit-scout',
+    name: 'Blinkit Growth Case Study — Scout',
+    accentColor: '#f59e0b', // amber yellow
+    hoverBorder: 'rgba(245, 158, 11, 0.4)',
+    baseGrad: 'linear-gradient(135deg, #2e1a00 0%, #171200 50%, #0a0a0f 100%)',
+    glowGrad: 'radial-gradient(circle at 50% 50%, #f59e0b22 0%, transparent 70%)',
+    tagsStr: 'GROWTH · AI RECOMMENDATION · CASE STUDY',
+    summary: 'Designed and prototyped Scout, an AI recommendation engine that surfaces categories a user has never bought from — not what\'s popular together, but what\'s specifically missing from their history — paired with trust proof shown by default, not hidden behind a tap. Took the project from root-cause research through solution scoring, a working deployed MVP, and a full metrics framework isolating the feature\'s own causal contribution to the growth target.',
     liveLink: null,
-    prdLink: null,
+    prdLink: 'https://drive.google.com/file/d/1i5tYjFD3VrKQsq0Wncvc4m17mNW4bgpx/view?usp=sharing',
+    prdLinkLabel: 'Read Case Study',
     image: null,
-    imageLabel: 'Coming Soon',
+    imageLabel: 'Blinkit Scout',
   },
 ];
 
@@ -184,7 +185,7 @@ function FeaturedProjectCard({ project }) {
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 text-white font-semibold text-sm border border-white/20 hover:bg-white/20 transition-colors"
               >
                 <FileText size={16} />
-                Read PRD
+                {project.prdLinkLabel || 'Read PRD'}
               </motion.button>
             )}
           </div>
